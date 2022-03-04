@@ -9,11 +9,18 @@ export class NytService {
   constructor(private httpService: HttpService) {}
   async nytSearchByWord(wordToSearch: string) {
     const NYTApiUrl = `https://api.nytimes.com/svc/search/v2/articlesearch.json?q=${wordToSearch}&api-key=${NYTApiKey}`;
-    const NYTApiData = await lastValueFrom(
+    const NYTApiData: NYTNew[] = await lastValueFrom(
       this.httpService
         .get(NYTApiUrl)
         ?.pipe(map((response) => response.data.response.docs)),
     );
-    return NYTApiData;
+    const news: INew[] = NYTApiData.map((currentNytNew) => {
+      return {
+        title: currentNytNew.headline.main,
+        url: currentNytNew.web_url,
+        publication_date: new Date(currentNytNew.pub_date),
+      };
+    });
+    return news;
   }
 }
