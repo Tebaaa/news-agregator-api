@@ -25,10 +25,11 @@ export class NewsService {
     };
     throw new HttpException(message, HttpStatus.BAD_REQUEST);
   }
-  // searchByWord(wordToSearch: string) {
-  //   const guardianData =
-  //     this.guardianService.guardianSearchByWord(wordToSearch);
-  //   const NYTData = this.nytService.nytSearchByWord(wordToSearch);
-  //   return guardianData;
-  // }
+  async searchByWord(wordToSearch: string) {
+    const guardianData = await this.guardianService.guardianSearchByWord(
+      wordToSearch,
+    );
+    const NYTData = await this.nytService.nytSearchByWord(wordToSearch);
+    return guardianData.concat(NYTData);
+  }
 }
