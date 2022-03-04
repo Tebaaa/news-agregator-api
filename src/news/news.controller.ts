@@ -5,6 +5,8 @@ import {
   HttpStatus,
   Query,
 } from '@nestjs/common';
+
+import { port } from 'src/constants/constants';
 import { NewsService } from './news.service';
 
 @Controller('news')
@@ -18,7 +20,7 @@ export class NewsController {
     const message = {
       statusCode: HttpStatus.BAD_REQUEST,
       message: `'search' query parameter is required. 'newspaper' query parameter is optional.`,
-      example: 'http://localhost:3000/news?search=kitty',
+      example: `http://localhost:${port}/news?search=kitty`,
     };
     throw new HttpException(message, HttpStatus.BAD_REQUEST);
   }
