@@ -2,9 +2,9 @@
   "name": "news-aggregator-api",
   "version": "0.0.1",
   "description": "",
-  "author": "",
+  "author": "Esteban Carrasco",
   "private": true,
-  "license": "UNLICENSED",
+  "license": "Private",
   "scripts": {
     "prebuild": "rimraf dist",
     "build": "nest build",
@@ -19,6 +19,10 @@
     "test:cov": "jest --coverage",
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
     "test:e2e": "jest --config ./test/jest-e2e.json"
+  },
+  "engines": {
+    "npm": ">=8.3.0",
+    "node": ">=16.14.0"
   },
   "dependencies": {
     "@nestjs/axios": "^0.0.6",
