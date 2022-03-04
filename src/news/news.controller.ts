@@ -18,7 +18,7 @@ export class NewsController {
     const message = {
       statusCode: HttpStatus.BAD_REQUEST,
       message: `'search' query parameter is required. 'newspaper' query parameter is optional.`,
-      example: 'http://localhost:3000/news?search=war',
+      example: 'http://localhost:3000/news?search=kitty',
     };
     throw new HttpException(message, HttpStatus.BAD_REQUEST);
   }
