@@ -1,4 +1,5 @@
 import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
+import { GNewsService } from 'src/g-news/g-news.service';
 import { GuardianService } from 'src/guardian/guardian.service';
 import { NytService } from 'src/nyt/nyt.service';
 
@@ -7,6 +8,7 @@ export class NewsService {
   constructor(
     private nytService: NytService,
     private guardianService: GuardianService,
+    private gNewsService: GNewsService,
   ) {}
   async filterNewsPaper(newsPaper: newsPaper, wordToSearch: string) {
     if (!wordToSearch) {
@@ -25,10 +27,14 @@ export class NewsService {
         this.guardianService.guardianSearchByWord(wordToSearch);
       return guardianData;
     }
+    if (newsPaper === 'gnews') {
+      const gNewsData = this.gNewsService.gNewsSearchByWord(wordToSearch);
+      return gNewsData;
+    }
     const message = {
       statusCode: HttpStatus.BAD_REQUEST,
       message: 'Not valid newspaper value',
-      acceptedValues: ['guardian', 'nyt'],
+      acceptedValues: ['guardian', 'nyt', 'gnews'],
     };
     throw new HttpException(message, HttpStatus.BAD_REQUEST);
   }
@@ -37,6 +43,7 @@ export class NewsService {
       wordToSearch,
     );
     const NYTData = await this.nytService.nytSearchByWord(wordToSearch);
-    return guardianData.concat(NYTData);
+    const gNewsData = await this.gNewsService.gNewsSearchByWord(wordToSearch);
+    return guardianData.concat(NYTData).concat(gNewsData);
   }
 }
