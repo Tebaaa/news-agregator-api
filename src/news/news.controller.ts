@@ -4,7 +4,9 @@ import {
   HttpException,
   HttpStatus,
   Query,
+  UseGuards,
 } from '@nestjs/common';
+import { JwtAuthGuard } from 'src/auth/strategies/jwt-auth.guard';
 
 import { port } from 'src/constants/constants';
 import { NewsService } from './news.service';
@@ -12,6 +14,8 @@ import { NewsService } from './news.service';
 @Controller('news')
 export class NewsController {
   constructor(private newsService: NewsService) {}
+
+  @UseGuards(JwtAuthGuard)
   @Get()
   filterByQuery(@Query() params) {
     const { search, newspaper } = params;
