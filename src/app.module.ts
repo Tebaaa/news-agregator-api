@@ -3,13 +3,25 @@ import { Module } from '@nestjs/common';
 import { NewsModule } from './news/news.module';
 import { UsersModule } from './users/users.module';
 import { AuthModule } from './auth/auth.module';
+import { TypeOrmModule } from '@nestjs/typeorm';
 
 @Module({
   imports: [
-    
-    NewsModule, 
-    UsersModule, 
-    AuthModule
+    TypeOrmModule.forRoot({
+      type: 'postgres',
+      host: 'localhost',
+      port: 5432,
+      username: 'teba',
+      password: 'admin',
+      database: 'news_agregator',
+      entities: ['dist/**/*.entity{.ts,.js}'],
+      synchronize: false,
+      retryDelay: 3000,
+      retryAttempts: 10,
+    }),
+    NewsModule,
+    UsersModule,
+    AuthModule,
   ],
   controllers: [],
   providers: [],
