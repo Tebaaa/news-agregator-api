@@ -1,5 +1,5 @@
-import { IsString } from 'class-validator';
+import { IsUrl } from 'class-validator';
 export class SaveNewDto {
-  @IsString()
+  @IsUrl()
   readonly url_new: string;
 }
