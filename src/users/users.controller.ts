@@ -2,9 +2,12 @@ import {
   Body,
   Controller,
   Get,
+  HttpException,
+  HttpStatus,
   Param,
   Patch,
   Post,
+  Request,
   UseGuards,
 } from '@nestjs/common';
 import { CreateUserDto } from './dto/create-user.dto';
@@ -43,13 +46,31 @@ export class UsersController {
 
   @UseGuards(JwtAuthGuard)
   @Get(':id/news')
-  findAll() {
-    return this.savedNewsService.findAll();
+  findAll(@Request() req, @Param('id') id: number) {
+    const authenticatedUserId = req.user.userId;
+    if (authenticatedUserId === id) {
+      return this.savedNewsService.findAll();
+    }
+    throw new HttpException(
+      'You are authenticated with a different ID',
+      HttpStatus.UNAUTHORIZED,
+    );
   }
 
   @UseGuards(JwtAuthGuard)
   @Post(':id/news')
-  createNew(@Param('id') id: number, @Body() newToSave: SaveNewDto) {
-    return this.savedNewsService.create(newToSave, id);
+  createNew(
+    @Param('id') id: number,
+    @Body() newToSave: SaveNewDto,
+    @Request() req,
+  ) {
+    const authenticatedUserId = req.user.userId;
+    if (authenticatedUserId === id) {
+      return this.savedNewsService.create(newToSave, id);
+    }
+    throw new HttpException(
+      'You are authenticated with a different ID',
+      HttpStatus.UNAUTHORIZED,
+    );
   }
 }
