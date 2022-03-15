@@ -37,7 +37,9 @@ export class UsersService {
     return user;
   }
   async create(createUserDto: CreateUserDto) {
-    const user = this.findOneByUsername(createUserDto.username);
+    const user = await this.usersRepo.findOne({
+      username: createUserDto.username,
+    });
     if (user) {
       throw new HttpException(
         'Username has already been taken',
