@@ -1,7 +1,9 @@
 import {
   Body,
   Controller,
+  Delete,
   Get,
+  HttpCode,
   HttpException,
   HttpStatus,
   Param,
@@ -72,5 +74,10 @@ export class UsersController {
       'You are authenticated with a different ID',
       HttpStatus.UNAUTHORIZED,
     );
+  }
+  @Delete(':id')
+  @HttpCode(HttpStatus.NO_CONTENT)
+  deleteUser(@Param('id') id: number) {
+    return this.userService.delete(id);
   }
 }
