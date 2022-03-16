@@ -6,5 +6,9 @@ interface GNew {
   url: string;
   image: string;
   publishedAt: Date;
-  source: any;
+  source: GNewSource;
+}
+interface GNewSource {
+  name: string;
+  url: string;
 }

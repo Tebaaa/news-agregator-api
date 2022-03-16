@@ -19,6 +19,7 @@ export class GuardianService {
         title: currentGuardianNew.webTitle,
         url: currentGuardianNew.webUrl,
         publication_date: new Date(currentGuardianNew.webPublicationDate),
+        source: 'The Guardian',
       };
     });
     return news;

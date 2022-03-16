@@ -18,6 +18,7 @@ export class GNewsService {
         title: currentGNew.title,
         url: currentGNew.url,
         publication_date: currentGNew.publishedAt,
+        source: currentGNew.source.name,
       };
     });
     return news;
