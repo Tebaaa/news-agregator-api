@@ -4,16 +4,17 @@ import { NewsModule } from './news/news.module';
 import { UsersModule } from './users/users.module';
 import { AuthModule } from './auth/auth.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
+import { dbName, dbPassword, dbPort, dbUsername } from './constants/constants';
 
 @Module({
   imports: [
     TypeOrmModule.forRoot({
       type: 'postgres',
       host: 'localhost',
-      port: 5432,
-      username: 'teba',
-      password: 'admin',
-      database: 'news_agregator',
+      port: dbPort,
+      username: dbUsername,
+      password: dbPassword,
+      database: dbName,
       entities: ['dist/**/*.entity{.ts,.js}'],
       synchronize: true,
       autoLoadEntities: true,
