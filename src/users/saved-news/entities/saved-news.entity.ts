@@ -15,7 +15,7 @@ export class SavedNews {
   url_new: string;
   @Column()
   user_id: number;
-  @ManyToOne((type) => User, (user) => user.news_saved)
+  @ManyToOne((type) => User, (user) => user.news_saved, { onDelete: 'CASCADE' })
   @JoinColumn({ name: 'user_id' })
   user: User;
 }

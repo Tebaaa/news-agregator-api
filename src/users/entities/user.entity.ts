@@ -12,6 +12,8 @@ export class User {
   @Column()
   password: string;
 
-  @OneToMany((type) => SavedNews, (savedNew) => savedNew.user)
+  @OneToMany((type) => SavedNews, (savedNew) => savedNew.user, {
+    onDelete: 'CASCADE',
+  })
   news_saved: SavedNews[];
 }
