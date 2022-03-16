@@ -39,11 +39,10 @@ export class NewsService {
     throw new HttpException(message, HttpStatus.BAD_REQUEST);
   }
   async searchByWord(wordToSearch: string) {
-    const guardianData = await this.guardianService.guardianSearchByWord(
-      wordToSearch,
-    );
-    const NYTData = await this.nytService.nytSearchByWord(wordToSearch);
-    const gNewsData = await this.gNewsService.gNewsSearchByWord(wordToSearch);
-    return guardianData.concat(NYTData).concat(gNewsData);
+    const guardianData =
+      this.guardianService.guardianSearchByWord(wordToSearch);
+    const NYTData = this.nytService.nytSearchByWord(wordToSearch);
+    const gNewsData = this.gNewsService.gNewsSearchByWord(wordToSearch);
+    return (await Promise.all([guardianData, NYTData, gNewsData])).flat();
   }
 }
