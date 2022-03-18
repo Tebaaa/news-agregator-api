@@ -86,3 +86,6 @@ Update user:
 
 Delete user by id:
 >DELETE http://localhost:3000/users/\<user_id>
+
+# Dessign Patterns
+
