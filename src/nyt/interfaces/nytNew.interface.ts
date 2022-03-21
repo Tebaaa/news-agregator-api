@@ -1,5 +1,4 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
-interface INYTNew {
+export interface INYTNew {
   abstract: string;
   web_url: string;
   snippet: string;

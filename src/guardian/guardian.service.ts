@@ -3,6 +3,8 @@ import { Injectable } from '@nestjs/common';
 import { lastValueFrom, map } from 'rxjs';
 
 import { guardianApiKey } from 'src/constants/constants';
+import { INew } from 'src/news/interfaces/news.interface';
+import { IGuardianNew } from './interfaces/guardianNew.interface';
 
 @Injectable()
 export class GuardianService {

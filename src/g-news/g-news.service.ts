@@ -2,6 +2,8 @@ import { HttpService } from '@nestjs/axios';
 import { Injectable } from '@nestjs/common';
 import { lastValueFrom, map } from 'rxjs';
 import { gNewsApiKey } from 'src/constants/constants';
+import { INew } from 'src/news/interfaces/news.interface';
+import { IGNew } from './interfaces/gNew.interface';
 
 @Injectable()
 export class GNewsService {

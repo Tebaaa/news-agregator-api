@@ -1,5 +1,4 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
-interface IGuardianNew {
+export interface IGuardianNew {
   id: string;
   type: string;
   sectionId: string;

@@ -3,6 +3,8 @@ import { Injectable } from '@nestjs/common';
 import { lastValueFrom, map } from 'rxjs';
 
 import { NYTApiKey } from 'src/constants/constants';
+import { INew } from 'src/news/interfaces/news.interface';
+import { INYTNew } from './interfaces/nytNew.interface';
 
 @Injectable()
 export class NytService {
