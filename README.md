@@ -89,3 +89,31 @@ Delete user by id:
 
 # Dessign Patterns
 
+### Wich patterns does Nest.JS use?
+- `Proxy` dessign pattern as `guards`. Guards add some process before passing to the controller's code, but without changing its funcionality.
+- `Decorator` dessign pattern as `decorators` in "everything".
+### How to implement dependency injection in typescript:
+Dependency injection is when an object depends on another object's method/attribute/propierty. Said so, the easy example of this in typescript is a function object that depends on an object that has a specific method:
+``` ts
+//Interface for a class that should have a void method named sayHello
+interface IGreeter {
+	sayHello(): void;
+}
+
+//Class that has sayHello method
+class Greeter implements IGreeter {
+	sayHello() {
+		console.log("Hello World!")
+	}
+}
+// Here, greetings has a dependency on a Greeter object
+function greetings (greeter: Greeter) { 
+	greeter.sayHello()
+}
+const greeter1 = new Greeter();
+greetings(greeter1); //`Hello World!`
+```
+
+### Which patterns can be used on my application?
+- `Adapter` pattern, for the creation of INews based on different news from NYT, GNews and The Guardian.
+- `Chain of Responsibility`, like an added functionality for the above.
