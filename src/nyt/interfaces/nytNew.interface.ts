@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-interface NYTNew {
+interface INYTNew {
   abstract: string;
   web_url: string;
   snippet: string;

@@ -9,7 +9,7 @@ export class GuardianService {
   constructor(private httpService: HttpService) {}
   async guardianSearchByWord(wordToSearch: string) {
     const guardianApiUrl = `https://content.guardianapis.com/search?q=${wordToSearch}&api-key=${guardianApiKey}`;
-    const guardianApiData: GuardianNew[] = await lastValueFrom(
+    const guardianApiData: IGuardianNew[] = await lastValueFrom(
       this.httpService
         .get(guardianApiUrl)
         ?.pipe(map((response) => response.data.response.results)),

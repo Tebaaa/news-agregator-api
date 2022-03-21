@@ -1,14 +1,14 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-interface GNew {
+interface IGNew {
   title: string;
   description: string;
   content: string;
   url: string;
   image: string;
   publishedAt: Date;
-  source: GNewSource;
+  source: IGNewSource;
 }
-interface GNewSource {
+interface IGNewSource {
   name: string;
   url: string;
 }

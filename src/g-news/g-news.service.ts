@@ -8,7 +8,7 @@ export class GNewsService {
   constructor(private httpService: HttpService) {}
   async gNewsSearchByWord(wordToSearch: string) {
     const gNewsApiUrl = `https://gnews.io/api/v4/search?q=${wordToSearch}&token=${gNewsApiKey}`;
-    const gNewsApiData: GNew[] = await lastValueFrom(
+    const gNewsApiData: IGNew[] = await lastValueFrom(
       this.httpService
         .get(gNewsApiUrl)
         ?.pipe(map((response) => response.data.articles)),

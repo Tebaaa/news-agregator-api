@@ -9,7 +9,7 @@ export class NytService {
   constructor(private httpService: HttpService) {}
   async nytSearchByWord(wordToSearch: string) {
     const NYTApiUrl = `https://api.nytimes.com/svc/search/v2/articlesearch.json?q=${wordToSearch}&api-key=${NYTApiKey}`;
-    const NYTApiData: NYTNew[] = await lastValueFrom(
+    const NYTApiData: INYTNew[] = await lastValueFrom(
       this.httpService
         .get(NYTApiUrl)
         ?.pipe(map((response) => response.data.response.docs)),

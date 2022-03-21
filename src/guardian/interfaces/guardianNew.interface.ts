@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-interface GuardianNew {
+interface IGuardianNew {
   id: string;
   type: string;
   sectionId: string;
