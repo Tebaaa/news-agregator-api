@@ -116,4 +116,4 @@ greetings(greeter1); //`Hello World!`
 
 ### Which patterns can be used on my application?
 - `Adapter` pattern, for the creation of INews based on different news from NYT, GNews and The Guardian.
-- `Chain of Responsibility`, like an added functionality for the above.
+- `Chain of Responsibility`, like an added functionality for the above. Every time that a new from any of the sources needs to be adapted to INew type, the chain will handle it.
