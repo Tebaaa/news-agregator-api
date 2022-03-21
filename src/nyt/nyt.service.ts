@@ -5,6 +5,7 @@ import { lastValueFrom, map } from 'rxjs';
 import { NYTApiKey } from 'src/constants/constants';
 import { INew } from 'src/news/interfaces/news.interface';
 import { INYTNew } from './interfaces/nytNew.interface';
+import { adaptersChain } from 'src/dessign-patterns/adapter-chain';
 
 @Injectable()
 export class NytService {
@@ -17,12 +18,7 @@ export class NytService {
         ?.pipe(map((response) => response.data.response.docs)),
     );
     const news: INew[] = NYTApiData.map((currentNytNew) => {
-      return {
-        title: currentNytNew.headline.main,
-        url: currentNytNew.web_url,
-        publication_date: new Date(currentNytNew.pub_date),
-        data_source: 'NYT',
-      };
+      return adaptersChain(currentNytNew);
     });
     return news;
   }

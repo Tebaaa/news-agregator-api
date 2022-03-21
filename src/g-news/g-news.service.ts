@@ -2,6 +2,7 @@ import { HttpService } from '@nestjs/axios';
 import { Injectable } from '@nestjs/common';
 import { lastValueFrom, map } from 'rxjs';
 import { gNewsApiKey } from 'src/constants/constants';
+import { adaptersChain } from 'src/dessign-patterns/adapter-chain';
 import { INew } from 'src/news/interfaces/news.interface';
 import { IGNew } from './interfaces/gNew.interface';
 
@@ -16,12 +17,7 @@ export class GNewsService {
         ?.pipe(map((response) => response.data.articles)),
     );
     const news: INew[] = gNewsApiData.map((currentGNew) => {
-      return {
-        title: currentGNew.title,
-        url: currentGNew.url,
-        publication_date: currentGNew.publishedAt,
-        data_source: currentGNew.source.name,
-      };
+      return adaptersChain(currentGNew);
     });
     return news;
   }

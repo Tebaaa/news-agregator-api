@@ -5,6 +5,7 @@ import { lastValueFrom, map } from 'rxjs';
 import { guardianApiKey } from 'src/constants/constants';
 import { INew } from 'src/news/interfaces/news.interface';
 import { IGuardianNew } from './interfaces/guardianNew.interface';
+import { adaptersChain } from 'src/dessign-patterns/adapter-chain';
 
 @Injectable()
 export class GuardianService {
@@ -17,12 +18,7 @@ export class GuardianService {
         ?.pipe(map((response) => response.data.response.results)),
     );
     const news: INew[] = guardianApiData.map((currentGuardianNew) => {
-      return {
-        title: currentGuardianNew.webTitle,
-        url: currentGuardianNew.webUrl,
-        publication_date: new Date(currentGuardianNew.webPublicationDate),
-        data_source: 'The Guardian',
-      };
+      return adaptersChain(currentGuardianNew);
     });
     return news;
   }
