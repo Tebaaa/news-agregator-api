@@ -19,7 +19,7 @@ export class NytService {
         title: currentNytNew.headline.main,
         url: currentNytNew.web_url,
         publication_date: new Date(currentNytNew.pub_date),
-        source: 'NYT',
+        data_source: 'NYT',
       };
     });
     return news;
