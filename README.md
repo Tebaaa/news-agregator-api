@@ -92,6 +92,9 @@ Delete user by id:
 ### Wich patterns does Nest.JS use?
 - `Proxy` dessign pattern as `guards`. Guards add some process before passing to the controller's code, but without changing its funcionality.
 - `Decorator` dessign pattern as `decorators` in "everything".
+- `Strategy` in the way that controllers work.
+- `Template` in the architecture of nestJS
+- 
 ### How to implement dependency injection in typescript:
 Dependency injection is when an object depends on another object's method/attribute/propierty. Said so, the easy example of this in typescript is a function object that depends on an object that has a specific method:
 ``` ts
@@ -113,7 +116,15 @@ function greetings (greeter: Greeter) {
 const greeter1 = new Greeter();
 greetings(greeter1); //`Hello World!`
 ```
+Dependency injection is also present in the way modules work in NestJS, and of course, in the way ORMs work.
 
 ### Which patterns can be used on my application?
 - `Adapter` pattern, for the creation of INews based on different news from NYT, GNews and The Guardian.
 - `Chain of Responsibility`, like an added functionality for the above. Every time that a new from any of the sources needs to be adapted to INew type, the chain will handle it.
+
+### Antipaterns:
+Antipattern is a bad practice at software development. Is the opposite of dessign patterns. It frecuently happens because of lack of knowledge or experience. In general, an antipattern is a common, but ineffective, response to a problem. 
+In cases, an antipattern is a dessign pattern bad implemented. \
+Antipatterns in this project:
+- Copy paste code in news controller and service for handling an error with an empty query parameter (corrected).
+- Boat anchor as root endpoint service and controller in the previous version of the project (corrected).
