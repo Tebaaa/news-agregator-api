@@ -1,4 +1,4 @@
-import { IGuardianNew } from 'src/guardian/interfaces/guardianNew.interface';
+import { IGuardianNew } from 'src/news-apis/guardian/interfaces/guardianNew.interface';
 import { INew } from 'src/news/interfaces/news.interface';
 
 export class GuardianNewToGenericNew implements INew {

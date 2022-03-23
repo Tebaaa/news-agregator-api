@@ -1,4 +1,4 @@
-import { IGNew } from 'src/g-news/interfaces/gNew.interface';
+import { IGNew } from 'src/news-apis/g-news/interfaces/gNew.interface';
 import { INew } from 'src/news/interfaces/news.interface';
 
 export class GNewToGenericNew implements INew {

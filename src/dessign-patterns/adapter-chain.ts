@@ -1,7 +1,7 @@
-import { IGNew } from 'src/g-news/interfaces/gNew.interface';
-import { IGuardianNew } from 'src/guardian/interfaces/guardianNew.interface';
+import { IGNew } from 'src/news-apis/g-news/interfaces/gNew.interface';
+import { IGuardianNew } from 'src/news-apis/guardian/interfaces/guardianNew.interface';
 import { INew } from 'src/news/interfaces/news.interface';
-import { INYTNew } from 'src/nyt/interfaces/nytNew.interface';
+import { INYTNew } from 'src/news-apis/nyt/interfaces/nytNew.interface';
 import { GNewToGenericNew } from './adapters/g-new-adapter';
 import { GuardianNewToGenericNew } from './adapters/guardian-adapter';
 import { NYTNewToGenericNew } from './adapters/nyt-adapter';

@@ -1,5 +1,5 @@
 import { INew } from 'src/news/interfaces/news.interface';
-import { INYTNew } from 'src/nyt/interfaces/nytNew.interface';
+import { INYTNew } from 'src/news-apis/nyt/interfaces/nytNew.interface';
 
 export class NYTNewToGenericNew implements INew {
   title: string;

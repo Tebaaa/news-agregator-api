@@ -1,7 +1,7 @@
 import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
-import { GNewsService } from 'src/g-news/g-news.service';
-import { GuardianService } from 'src/guardian/guardian.service';
-import { NytService } from 'src/nyt/nyt.service';
+import { GNewsService } from 'src/news-apis/g-news/g-news.service';
+import { GuardianService } from 'src/news-apis/guardian/guardian.service';
+import { NytService } from 'src/news-apis/nyt/nyt.service';
 
 @Injectable()
 export class NewsService {
