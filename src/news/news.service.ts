@@ -11,13 +11,6 @@ export class NewsService {
     private gNewsService: GNewsService,
   ) {}
   async filterNewsPaper(newsPaper: newsPaper, wordToSearch: string) {
-    if (!wordToSearch) {
-      const message = {
-        statusCode: HttpStatus.BAD_REQUEST,
-        message: `The 'search' query parameter can't be empty`,
-      };
-      throw new HttpException(message, HttpStatus.BAD_REQUEST);
-    }
     if (newsPaper === 'nyt') {
       const NYTData = this.nytService.nytSearchByWord(wordToSearch);
       return NYTData;

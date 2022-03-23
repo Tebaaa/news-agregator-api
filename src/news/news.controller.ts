@@ -19,7 +19,9 @@ export class NewsController {
   @Get()
   filterByQuery(@Query() params) {
     const { search, newspaper } = params;
-    if (newspaper) return this.newsService.filterNewsPaper(newspaper, search);
+    if (newspaper && search) {
+      return this.newsService.filterNewsPaper(newspaper, search);
+    }
     if (search) return this.newsService.searchByWord(search);
     const message = {
       statusCode: HttpStatus.BAD_REQUEST,
