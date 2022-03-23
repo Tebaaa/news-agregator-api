@@ -51,7 +51,7 @@ export class UsersController {
   findAll(@Request() req, @Param('id') id: number) {
     const authenticatedUserId = req.user.userId;
     if (authenticatedUserId === id) {
-      return this.savedNewsService.findAll();
+      return this.savedNewsService.findAll(id);
     }
     throw new HttpException(
       'You are authenticated with a different ID',

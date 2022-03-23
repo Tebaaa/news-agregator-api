@@ -10,8 +10,8 @@ export class SavedNewsService {
     @InjectRepository(SavedNews) private savedNewsRepo: Repository<SavedNews>,
   ) {}
 
-  findAll() {
-    return this.savedNewsRepo.find();
+  findAll(id: number) {
+    return this.savedNewsRepo.find({ user_id: id });
   }
   async create(newToSave: SaveNewDto, id: number) {
     const existingNew = await this.savedNewsRepo.findOne({
